@@ -1,0 +1,13 @@
+<app-search-bar (newItemEvent)="searchText = $event"></app-search-bar>
+
+<mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event">
+              
+</mat-paginator>
+
+<mat-list *ngIf="pageEvent" >
+    <mat-list-item *ngFor="let doctor of doctorList | filter:searchText; let lastDoctor=last ">{{ doctor.name }}<mat-divider *ngIf="!lastDoctor"></mat-divider></mat-list-item>
+</mat-list>
+
